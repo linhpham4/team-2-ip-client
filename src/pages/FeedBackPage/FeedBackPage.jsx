@@ -1,6 +1,6 @@
 import "./FeedBackPage.scss";
 import hero from "../../assets/images/feedbackpage-hero.svg";
-import tabs from "../../assets/images/tabs.svg";
+import tabs from "../../assets/images/new_tabs.svg";
 import input from "../../assets/images/input.svg";
 import conf from "../../assets/images/confirmation.svg";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
