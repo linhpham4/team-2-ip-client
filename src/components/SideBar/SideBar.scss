@@ -1,0 +1,61 @@
+@use "../../styles/partials/variables.scss" as *;
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    width: 22rem;
+    height: 100%;
+    z-index: 9999;
+    overflow: scroll;
+
+    &__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+    }
+
+    &__header {
+        display: flex;
+        background-color: $medium;
+        color: $white;
+        align-items: center;
+        padding: 13px 30px 13px 36px;
+    }
+
+    &__img {
+        width: 30px;
+        margin-right: 10px;
+    }
+
+    &__item-container {
+        display: flex;
+    }
+
+    &__section {
+        border-bottom: 1px solid $gray;
+    }
+
+    &__section-header {
+        padding: 26px 30px 13px 36px;
+    }
+
+    &__icon {
+        rotate: 180deg;
+        width: 15px;
+    }
+
+    &__item {
+        color: $darkblack;
+        width: 15rem;
+        padding: 13px 30px 13px 36px;
+    }
+
+}

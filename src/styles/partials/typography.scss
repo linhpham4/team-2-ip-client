@@ -1,0 +1,50 @@
+@mixin bold {
+    font-weight: 700;
+}
+
+@mixin small {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+@mixin label-default {
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin optional {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin placeholder {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin secondary-description {
+    font-size: 12px;
+    line-height: 16px ;
+}
+
+@mixin normal-link {
+    color: #0972D3;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin primary-link {
+    color: #0972D3;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin info-link {
+    color: #0972D3;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 16px;
+}
