@@ -1,6 +1,5 @@
 import "./ReviewPopup.scss";
 import guitar from "../../assets/images/guitar.jpg";
-import icon from "../../assets/images/reviewer-profile-icon.svg";
 import rating from "../../assets/images/5star.svg";
 import Button from "../Button/Button";
 import x from "../../assets/images/x.svg";
@@ -74,10 +73,12 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
 
         <img src={guitar} alt="guitar" className="reviewpopup__img" />
         <div className="reviewpopup__container">
+          
 
 
 
           <div key={review.id} className="reviewpopup__wrap">
+            <img src={rating} alt="star" />
             <p className="reviewpopup__review-title">
               {review.review_headline}
             </p>
