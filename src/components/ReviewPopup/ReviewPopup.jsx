@@ -5,38 +5,35 @@ import Button from "../Button/Button";
 import x from "../../assets/images/x.svg";
 import reason from "../../assets/images/reason-question.svg";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from 'axios';
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-
-const ReviewPopup = ({ onClose, handleSubmit }) => {
+const ReviewPopup = ({ onClose }) => {
   const [feedbackType, setFeedbackType] = useState(null);
   const [textareaValue, setTextareaValue] = useState("");
   const [review, setReview] = useState(null);
 
-  const API_URL = import.meta.env.VITE_APP_BASE_URL
+
+  const API_URL = import.meta.env.VITE_APP_BASE_URL;
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const getReviewData = async () => {
     try {
-      const response = await axios.get(`${API_URL}/reviews/${id}`)
-      setReview(response.data)
-
+      const response = await axios.get(`${API_URL}/reviews/${id}`);
+      setReview(response.data);
     } catch (error) {
       console.log(`Error fetching reviews data: ${error}`);
     }
-  }
+  };
 
   useEffect(() => {
     getReviewData();
-  }, [id])
+  }, [id]);
 
   if (!review) {
     return <p>Loading...</p>;
   }
-
-
-
 
   const handleButtonClick = (type) => {
     setFeedbackType(type);
@@ -51,11 +48,32 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
     setTextareaValue(e.target.value);
   };
 
-  const handleFormSubmit = () => {
-    if (textareaValue.trim()) {
-      handleSubmit();
-      onClose();
+
+  
+  const handleFormSubmit = async (event) => {
+    try {
+      // event.preventDefault();
+      // await axios.post(`${API_URL}/vinereviews`, {
+      //   "review_id": id,
+      //   "user_id": review.user_id,
+      //   "product_id": review.product_id,
+      //   "review_star_rating": review.review_star_rating,
+      //   "review_headline": review.review_headline,
+      //   "review_body": review.review_body,
+      //   "review_date": review.review_date,
+      //   "vine_user_id": 1,
+      //   "vine_helpful": feedbackType,
+      //   "vine_explanation": event.target.value,
+      // });
+  
+    alert("Review has been successfully submitted!");
+    navigate("/feedback");
+  
+    } catch (error) {
+      console.log(error)
     }
+
+    
   };
 
   return (
@@ -70,24 +88,15 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
       />
 
       <div className="reviewpopup">
-
         <img src={guitar} alt="guitar" className="reviewpopup__img" />
         <div className="reviewpopup__container">
-          
-
-
-
           <div key={review.id} className="reviewpopup__wrap">
             <img src={rating} alt="star" />
             <p className="reviewpopup__review-title">
               {review.review_headline}
             </p>
-            <p className="reviewpopup__review">
-              {review.review_body}
-            </p>
+            <p className="reviewpopup__review">{review.review_body}</p>
           </div>
-
-
 
           <img src={guitar} alt="guitar" className="reviewpopup__thumbnail" />
 
@@ -100,13 +109,13 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
                 <Button
                   className="button--bordered"
                   text="Helpful"
-                  onClick={() => handleButtonClick("helpful")}
+                  onClick={() => handleButtonClick(true)}
                 />
                 <div className="divider"></div>
                 <Button
                   className="button--bordered"
                   text="Not Helpful"
-                  onClick={() => handleButtonClick("notHelpful")}
+                  onClick={() => handleButtonClick(false)}
                 />
               </div>
             </>
@@ -118,9 +127,11 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
                 className="reviewpopup__question"
                 onClick={handleReasonClick}
               />
+              <form className="reviewpopup__form" onSubmit={handleFormSubmit}>
               <textarea
                 className="reviewpopup__textarea"
                 value={textareaValue}
+                name="explanation"
                 onChange={handleTextareaChange}
                 placeholder={
                   feedbackType === "helpful"
@@ -136,13 +147,12 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
                       : "button--disabled reviewpopup__button-container"
                   }
                   text="Submit"
-                  onClick={handleFormSubmit}
                 />
               </div>
+              </form>
             </>
           )}
         </div>
-
       </div>
     </>
   );
