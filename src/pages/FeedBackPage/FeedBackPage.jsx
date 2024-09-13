@@ -7,6 +7,8 @@ import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 import ReviewsList from "../../components/ReviewsList/ReviewsList";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
   const [reviews, setReviews] = useState([]);
@@ -47,14 +49,15 @@ const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
 
         {/* Dynamic Review List */}
         {reviews.map((review) => (
-          <ReviewsList
-            key={review.id}
-            handleOpenClick={handleOpenClick}
-            reviewHeadline={review.review_headline}
-            reviewBody={review.review_body}
-          />
+          <Link to={`/feedback/${review.id}`}>
+            <ReviewsList
+              key={review.id}
+              handleOpenClick={handleOpenClick}
+              reviewHeadline={review.review_headline}
+              reviewBody={review.review_body}
+            />
+          </Link>
         ))}
-        
       </div>
       {popUp && (
         <ReviewPopup onClose={handleClosePopup} handleSubmit={handleSubmit} />

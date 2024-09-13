@@ -64,6 +64,7 @@
         display: flex;
         justify-content: space-between;
         padding-top: 20px;
+        margin-top: 1rem;
 
         &--right {
             display: flex;
@@ -86,6 +87,11 @@
         &::placeholder {
             font-family: "Open Sans";
         }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
     }
     
 }
