@@ -35,7 +35,16 @@ function App() {
             <HomePage popUp={popUp} handleClosePopup={handleClosePopup} />
           }
         />
-        <Route path="/feedback" element={<FeedBackPage />} />
+        <Route
+          path="/feedback"
+          element={
+            <FeedBackPage
+              popUp={popUp}
+              handleClosePopup={handleClosePopup}
+              handleOpenClick={handleOpenClick}
+            />
+          }
+        />
       </Routes>
     </Router>
   );
