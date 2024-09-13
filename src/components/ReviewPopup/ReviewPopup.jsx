@@ -14,7 +14,6 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
   const [feedbackType, setFeedbackType] = useState(null);
   const [textareaValue, setTextareaValue] = useState("");
   const [review, setReview] = useState(null);
-  const [reviewList, setReviewList] = useState({});
 
   const API_URL = import.meta.env.VITE_APP_BASE_URL
   const { id } = useParams();
