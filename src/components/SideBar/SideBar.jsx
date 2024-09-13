@@ -11,7 +11,7 @@ const SideBar = ({ onClose }) => {
       <div className="sidebar">
         <div className="sidebar__header">
           <img src={mockavatar} alt="icon" className="sidebar__img" />
-          <h3 className="sidebar__hello">Hello, Angelo</h3>
+          <h3 className="sidebar__hello">Hello, John</h3>
         </div>
 
         <div className="sidebar__section">
