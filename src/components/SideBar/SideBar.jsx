@@ -76,7 +76,7 @@ const SideBar = ({ onClose }) => {
         <div className="sidebar__section">
           <h4 className="sidebar__section-header">Amazon Vine</h4>
           <div className="sidebar__item-container">
-            <Link to="/feedback" className="sidebar__link">
+            <Link to="/reviews" className="sidebar__link">
               <p className="sidebar__item">Review Feedback</p>
             </Link>
           </div>

@@ -30,14 +30,14 @@ function App() {
         />
       </div>
       <Routes>
-        <Route
+        {/* <Route
           path="/"
           element={
             <HomePage popUp={popUp} handleClosePopup={handleClosePopup} />
           }
-        />
+        /> */}
         <Route
-          path="/feedback"
+          path="/"
           element={
             <FeedBackPage
               popUp={popUp}
@@ -47,7 +47,7 @@ function App() {
           }
         />
         <Route
-          path="/feedback/:id"
+          path="/reviews/:id"
           element={
             <ReviewPopup
               popUp={popUp}
