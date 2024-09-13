@@ -1,6 +1,7 @@
 import "./SideBar.scss";
 import chevron from "../../assets/images/chevron.svg";
 import mockavatar from "../../assets/images/mock-avatar.svg";
+import { Link } from "react-router-dom";
 
 const SideBar = ({ onClose }) => {
   return (
@@ -75,7 +76,9 @@ const SideBar = ({ onClose }) => {
         <div className="sidebar__section">
           <h4 className="sidebar__section-header">Amazon Vine</h4>
           <div className="sidebar__item-container">
-            <p className="sidebar__item">Reviews</p>
+            <Link to="/feedback" className="sidebar__link">
+              <p className="sidebar__item">Reviews</p>
+            </Link>
           </div>
           <div className="sidebar__item-container">
             <p className="sidebar__item">Payments</p>
