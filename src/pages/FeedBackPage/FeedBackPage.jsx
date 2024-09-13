@@ -41,7 +41,7 @@ const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
             key={review.id}
             handleOpenClick={handleOpenClick}
             reviewHeadline={review.review_headline}
-            reviewDate={review.review_date}
+            reviewTimestamp={review.review_date}
             reviewBody={review.review_body}
           />
         ))}

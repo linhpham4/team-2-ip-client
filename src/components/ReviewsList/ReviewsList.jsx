@@ -1,6 +1,14 @@
 import "./ReviewsList.scss";
 
-const ReviewsList = ({ handleOpenClick, reviewHeadline, reviewDate, reviewBody }) => {
+const ReviewsList = ({ handleOpenClick, reviewHeadline, reviewTimestamp, reviewBody, }) => {
+
+  let date = new Date(reviewTimestamp * 1000);
+  let reviewDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <div className="reviewlist" onClick={handleOpenClick}>
       <div className="reviewlist__header">
