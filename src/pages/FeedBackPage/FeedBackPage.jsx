@@ -45,6 +45,7 @@ const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
           <img src={input} alt="input" className="feedbackpage__search" />
         </div>
 
+        {/* Dynamic Review List */}
         {reviews.map((review) => (
           <ReviewsList
             key={review.id}
@@ -53,34 +54,7 @@ const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
             reviewBody={review.review_body}
           />
         ))}
-
-        {/* <div className="feedbackpage__review-container">
-          <div className="feedbackpage__review-container-top">
-            <div className="feedbackpage__left-details">
-              <h3
-                className="feedbackpage__review-title"
-                onClick={handleOpenClick}
-              >
-                Strings are garbage but not a bad guitar
-              </h3>
-              <div className="feedbackpage__review-details">
-                <p className="feedbackpage__timestamp">
-                  Reviewed in Canada on June 21, 2024
-                </p>
-                <p className="feedbackpage__verified">Verified Purchase</p>
-              </div>
-            </div>
-            <p className="feedbackpage__credit">$5.25 Amazon Credit</p>
-          </div>
-          <div className="feedbackpage__review-container-bottom">
-            <p className="feedbackpage__review-container-preview">
-              The strings seemed cheap despite the advertisement that they were
-              from a quality string company. Watched a quick youtube video and
-              replaced the strings myself with better ones. All in all not a bad
-              little
-            </p>
-          </div>
-        </div> */}
+        
       </div>
       {popUp && (
         <ReviewPopup onClose={handleClosePopup} handleSubmit={handleSubmit} />
