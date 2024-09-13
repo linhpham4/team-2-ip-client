@@ -4,8 +4,27 @@ import tabs from "../../assets/images/tabs.svg";
 import input from "../../assets/images/input.svg";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 import ReviewsList from "../../components/ReviewsList/ReviewsList";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
+
+  const [reviews, setReviews] = useState([]);
+  const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+  
+  const getReviews = async() => {
+    const response = await axios.get(`${baseUrl}/reviews`);
+    setReviews(response.data);
+  }
+  
+  useEffect(() => {
+    getReviews();
+  }, []);
+  
+  if (!reviews) {
+    <h1>Loading...</h1>
+  }
+
   return (
     <>
       <div className="feedbackpage">

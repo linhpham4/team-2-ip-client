@@ -1,24 +1,6 @@
 import "./ReviewsList.scss";
-import axios from "axios";
-import { useState, useEffect } from "react";
 
 const ReviewsList = ({ handleOpenClick }) => {
-
-const [reviews, setReviews] = useState([]);
-const baseUrl = import.meta.env.VITE_APP_BASE_URL;
-
-const getReviews = async() => {
-  const response = await axios.get(`${baseUrl}/reviews`);
-  setReviews(response.data);
-}
-
-useEffect(() => {
-  getReviews();
-}, []);
-
-if (!reviews) {
-  <h1>Loading...</h1>
-}
 
   return (
     <div className="reviewlist" onClick={handleOpenClick}>
