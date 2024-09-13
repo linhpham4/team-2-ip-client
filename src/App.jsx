@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import FeedBackPage from "./pages/FeedBackPage/FeedBackPage";
 import headerbar from "../src/assets/images/nav.svg";
 import Header from "./components/Header/Header";
+import ReviewPopup from "./components/ReviewPopup/ReviewPopup";
 
 function App() {
   const [popUp, setPopup] = useState(false);
@@ -39,6 +40,16 @@ function App() {
           path="/feedback"
           element={
             <FeedBackPage
+              popUp={popUp}
+              handleClosePopup={handleClosePopup}
+              handleOpenClick={handleOpenClick}
+            />
+          }
+        />
+        <Route
+          path="/feedback/:id"
+          element={
+            <ReviewPopup
               popUp={popUp}
               handleClosePopup={handleClosePopup}
               handleOpenClick={handleOpenClick}
