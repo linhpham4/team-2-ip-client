@@ -5,11 +5,40 @@ import rating from "../../assets/images/5star.svg";
 import Button from "../Button/Button";
 import x from "../../assets/images/x.svg";
 import reason from "../../assets/images/reason-question.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from 'axios';
+
 
 const ReviewPopup = ({ onClose, handleSubmit }) => {
   const [feedbackType, setFeedbackType] = useState(null);
   const [textareaValue, setTextareaValue] = useState("");
+  const [review, setReview] = useState(null);
+  const [reviewList, setReviewList] = useState({});
+
+  const API_URL = import.meta.env.VITE_APP_BASE_URL
+  const { id } = useParams();
+
+  const getReviewData = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/reviews/${id}`)
+      setReview(response.data)
+
+    } catch (error) {
+      console.log(`Error fetching reviews data: ${error}`);
+    }
+  }
+
+  useEffect(() => {
+    getReviewData();
+  }, [id])
+
+  if (!review) {
+    return <p>Loading...</p>;
+  }
+
+
+
 
   const handleButtonClick = (type) => {
     setFeedbackType(type);
@@ -41,18 +70,25 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
         className="reviewpopup__close-icon"
         onClick={onClose}
       />
+
       <div className="reviewpopup">
+
         <img src={guitar} alt="guitar" className="reviewpopup__img" />
         <div className="reviewpopup__container">
-          <p className="reviewpopup__review-title">
-            Strings are garbage but not a bad guitar
-          </p>
-          <p className="reviewpopup__review">
-            The strings seemed cheap despite the advertisement that they were
-            from a quality string company. Watched a quick youtube video and
-            replaced the strings myself with better ones. All in all not a bad
-            uke, I am happy with it to learn on.
-          </p>
+
+
+
+          <div key={review.id} className="reviewpopup__wrap">
+            <p className="reviewpopup__review-title">
+              {review.review_headline}
+            </p>
+            <p className="reviewpopup__review">
+              {review.review_body}
+            </p>
+          </div>
+
+
+
           <img src={guitar} alt="guitar" className="reviewpopup__thumbnail" />
 
           {feedbackType === null ? (
@@ -106,6 +142,7 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
             </>
           )}
         </div>
+
       </div>
     </>
   );
