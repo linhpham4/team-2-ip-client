@@ -44,7 +44,7 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
       <div className="reviewpopup">
         <img src={guitar} alt="guitar" className="reviewpopup__img" />
         <div className="reviewpopup__container">
-          <div className="reviewpopup__reviewer">
+          {/* <div className="reviewpopup__reviewer">
             <img src={icon} alt="icon" className="reviewpopup__icon" />
             <p className="reviewpopup__name">Ayla</p>
           </div>
@@ -54,7 +54,7 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
           </div>
           <p className="reviewpopup__timestamp">
             Reviewed in Canada on June 21, 2024
-          </p>
+          </p> */}
           <p className="reviewpopup__review-title">
             Strings are garbage but not a bad guitar
           </p>
