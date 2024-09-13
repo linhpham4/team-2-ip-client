@@ -7,13 +7,30 @@ import x from "../../assets/images/x.svg";
 import reason from "../../assets/images/reason-question.svg";
 import { useState } from "react";
 
-const ReviewPopup = ({ onClose }) => {
+const ReviewPopup = ({ onClose, handleSubmit }) => {
   const [feedbackType, setFeedbackType] = useState(null);
+  const [textareaValue, setTextareaValue] = useState("");
 
   const handleButtonClick = (type) => {
-    console.log("Button clicked:", type);
     setFeedbackType(type);
   };
+
+  const handleReasonClick = () => {
+    setFeedbackType(null);
+    setTextareaValue("");
+  };
+
+  const handleTextareaChange = (e) => {
+    setTextareaValue(e.target.value);
+  };
+
+  const handleFormSubmit = () => {
+    if (textareaValue.trim()) {
+      handleSubmit();
+      onClose();
+    }
+  };
+
   return (
     <>
       <div className="sidebar__overlay" onClick={onClose}></div>
@@ -51,9 +68,9 @@ const ReviewPopup = ({ onClose }) => {
 
           {feedbackType === null ? (
             <>
-              <h4 className="reviewpopup__question">
+              <h3 className="reviewpopup__question">
                 How did you find this review?
-              </h4>
+              </h3>
               <div className="reviewpopup__button-container">
                 <Button
                   className="button--bordered"
@@ -74,15 +91,29 @@ const ReviewPopup = ({ onClose }) => {
                 src={reason}
                 alt="question"
                 className="reviewpopup__question"
+                onClick={handleReasonClick}
               />
               <textarea
                 className="reviewpopup__textarea"
+                value={textareaValue}
+                onChange={handleTextareaChange}
                 placeholder={
                   feedbackType === "helpful"
-                    ? "Tell us why you found this review helpful..."
-                    : "Tell us why you found this review not helpful..."
+                    ? "Why did you find this review helpful..."
+                    : "Why did you find this review not helpful..."
                 }
               />
+              <div className="reviewpopup__button-container--right">
+                <Button
+                  className={
+                    textareaValue.trim()
+                      ? "button--active reviewpopup__button-container"
+                      : "button--disabled reviewpopup__button-container"
+                  }
+                  text="Submit"
+                  onClick={handleFormSubmit}
+                />
+              </div>
             </>
           )}
         </div>
@@ -90,4 +121,5 @@ const ReviewPopup = ({ onClose }) => {
     </>
   );
 };
+
 export default ReviewPopup;

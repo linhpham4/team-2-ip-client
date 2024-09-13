@@ -47,4 +47,11 @@
         font-weight: bold;
         color: $secondary-orange;
     }
+
+    &__confirmation {
+        position: relative;
+        bottom: 38rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
