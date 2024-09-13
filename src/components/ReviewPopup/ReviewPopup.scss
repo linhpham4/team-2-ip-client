@@ -1,0 +1,66 @@
+@use "../../styles/partials/variables.scss" as *;
+
+.reviewpopup {
+    display: flex;
+    position: fixed;
+    background-color: $white;
+    top: 50%;
+    left: 50%;
+    width: 83%;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    padding: 65px 0 65px 44px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    gap: 40px;
+
+    &__close-icon {
+        position: relative;
+        z-index: 9999;
+        bottom: 49.5rem;
+        left: 109rem;
+    }
+
+    &__icon {
+        padding-right: 10px;
+    }
+
+    &__reviewer {
+        display: flex;
+        align-items: center;
+    }
+
+    &__rv {
+        display: flex;
+        gap: 20px;
+    }
+
+    &__review-title {
+        font-weight: 700;
+    }
+
+    
+    &__thumbnail {
+        width: 82px;
+        border-radius: 8px;
+        padding: 10px 0;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        gap: 10px;
+    }
+
+    &__question {
+        padding-top: 10px;
+        border-top: 1px solid #9BA7B6;
+    }
+
+    &__button-container {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+}

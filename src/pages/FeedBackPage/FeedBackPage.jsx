@@ -1,9 +1,10 @@
 import "./FeedBackPage.scss";
 import hero from "../../assets/images/feedbackpage-hero.svg";
-import tabs from "../../assets/images/feedbackpage-tabs.svg";
+import tabs from "../../assets/images/tabs.svg";
 import input from "../../assets/images/input.svg";
+import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
 
-const FeedBackPage = () => {
+const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
   return (
     <>
       <div className="feedbackpage">
@@ -18,7 +19,10 @@ const FeedBackPage = () => {
         <div className="feedbackpage__review-container">
           <div className="feedbackpage__review-container-top">
             <div className="feedbackpage__left-details">
-              <h3 className="feedbackpage__review-title">
+              <h3
+                className="feedbackpage__review-title"
+                onClick={handleOpenClick}
+              >
                 Strings are garbage but not a bad guitar
               </h3>
               <div className="feedbackpage__review-details">
@@ -35,11 +39,12 @@ const FeedBackPage = () => {
               The strings seemed cheap despite the advertisement that they were
               from a quality string company. Watched a quick youtube video and
               replaced the strings myself with better ones. All in all not a bad
-              little{" "}
+              little
             </p>
           </div>
         </div>
       </div>
+      {popUp && <ReviewPopup onClose={handleClosePopup} />}
     </>
   );
 };
