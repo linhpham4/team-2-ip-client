@@ -1,0 +1,25 @@
+@use "../../styles/partials/typography.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.button {
+    padding: 4px 31.876px;
+    border-radius: 21.251px;
+    @include button;
+
+    &--bordered {
+        border: 1.5px solid #000716;
+        background-color: white;
+    }
+
+    &--disabled {
+        border: none;
+        background-color: #E9EBED;
+        color: #9BA7B6;
+    }
+
+    &--active {
+        background-color: #FFD814 ;
+        color: $black;
+        border: none;
+    }
+}
