@@ -44,17 +44,6 @@ const ReviewPopup = ({ onClose, handleSubmit }) => {
       <div className="reviewpopup">
         <img src={guitar} alt="guitar" className="reviewpopup__img" />
         <div className="reviewpopup__container">
-          <div className="reviewpopup__reviewer">
-            <img src={icon} alt="icon" className="reviewpopup__icon" />
-            <p className="reviewpopup__name">Ayla</p>
-          </div>
-          <div className="reviewpopup__rv">
-            <img src={rating} alt="" className="reviewpopup__rating" />
-            <p className="feedbackpage__verified">Verified purchase</p>
-          </div>
-          <p className="reviewpopup__timestamp">
-            Reviewed in Canada on June 21, 2024
-          </p>
           <p className="reviewpopup__review-title">
             Strings are garbage but not a bad guitar
           </p>
