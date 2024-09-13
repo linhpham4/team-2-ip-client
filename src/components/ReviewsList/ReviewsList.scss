@@ -2,9 +2,10 @@
 
 .reviewlist {
 
-    padding: 16px;
+    padding: 2rem 1rem;
     border: 1px solid #D1D5DB;
     border-radius: 8px;
+    margin-bottom: 1.5rem;
 
     &:hover {
         cursor: pointer;
@@ -14,27 +15,32 @@
     &__header {
         display: flex;
         justify-content: space-between;
+        padding-bottom: 1rem;
     }
     
     &__review-details {
         display: flex;
-        gap: 6px;
-        padding: 8px 0; 
+        gap: 0.5rem;
+        padding-top: 0.5rem; 
     }
 
     &__review-container-preview {
-        padding-top: 8px;
+        padding-top: 1rem;
         border-top: 1px solid #D1D5DB;
     }
 
     &__timestamp {
         color: $darkgray;
         border-right: 1px solid #D1D5DB;
-        padding-right: 6px;
+        padding-right: 0.5rem;
     }
 
     &__verified {
         font-weight: bold;
         color: $secondary-orange;
+    }
+
+    &__credit {
+        color: $credit-gray;
     }
 }

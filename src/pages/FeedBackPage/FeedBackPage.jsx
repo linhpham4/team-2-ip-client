@@ -8,21 +8,20 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
-
   const [reviews, setReviews] = useState([]);
   const baseUrl = import.meta.env.VITE_APP_BASE_URL;
-  
-  const getReviews = async() => {
+
+  const getReviews = async () => {
     const response = await axios.get(`${baseUrl}/reviews`);
     setReviews(response.data);
-  }
-  
+  };
+
   useEffect(() => {
     getReviews();
   }, []);
-  
+
   if (!reviews) {
-    <h1>Loading...</h1>
+    <h1>Loading...</h1>;
   }
 
   return (
@@ -37,7 +36,16 @@ const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
           <img src={input} alt="input" className="feedbackpage__search" />
         </div>
 
-        <ReviewsList handleOpenClick={handleOpenClick}/>
+        {reviews.map((review) => (
+          <ReviewsList
+            key={review.id}
+            handleOpenClick={handleOpenClick}
+            reviewHeadline={review.review_headline}
+            reviewDate={review.review_date}
+            reviewBody={review.review_body}
+          />
+        ))}
+
         {/* <div className="feedbackpage__review-container">
           <div className="feedbackpage__review-container-top">
             <div className="feedbackpage__left-details">
