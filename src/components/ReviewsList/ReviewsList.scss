@@ -1,0 +1,40 @@
+@use "../../styles/partials/variables.scss" as *;
+
+.reviewlist {
+
+    padding: 16px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+
+    &:hover {
+        cursor: pointer;
+        border: 1px solid $secondary-orange;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    &__review-details {
+        display: flex;
+        gap: 6px;
+        padding: 8px 0; 
+    }
+
+    &__review-container-preview {
+        padding-top: 8px;
+        border-top: 1px solid #D1D5DB;
+    }
+
+    &__timestamp {
+        color: $darkgray;
+        border-right: 1px solid #D1D5DB;
+        padding-right: 6px;
+    }
+
+    &__verified {
+        font-weight: bold;
+        color: $secondary-orange;
+    }
+}

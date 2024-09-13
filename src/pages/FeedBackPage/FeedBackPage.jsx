@@ -3,6 +3,7 @@ import hero from "../../assets/images/feedbackpage-hero.svg";
 import tabs from "../../assets/images/tabs.svg";
 import input from "../../assets/images/input.svg";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
+import ReviewsList from "../../components/ReviewsList/ReviewsList";
 
 const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
   return (
@@ -16,7 +17,9 @@ const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
           <h1 className="feedbackpage__section-header">Reviews</h1>
           <img src={input} alt="input" className="feedbackpage__search" />
         </div>
-        <div className="feedbackpage__review-container">
+
+        <ReviewsList handleOpenClick={handleOpenClick}/>
+        {/* <div className="feedbackpage__review-container">
           <div className="feedbackpage__review-container-top">
             <div className="feedbackpage__left-details">
               <h3
@@ -42,7 +45,7 @@ const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
               little
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
       {popUp && <ReviewPopup onClose={handleClosePopup} />}
     </>
