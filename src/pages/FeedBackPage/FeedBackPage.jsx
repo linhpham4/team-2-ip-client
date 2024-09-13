@@ -2,9 +2,19 @@ import "./FeedBackPage.scss";
 import hero from "../../assets/images/feedbackpage-hero.svg";
 import tabs from "../../assets/images/tabs.svg";
 import input from "../../assets/images/input.svg";
+import conf from "../../assets/images/confirmation.svg";
 import ReviewPopup from "../../components/ReviewPopup/ReviewPopup";
+import { useState } from "react";
 
 const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const handleSubmit = () => {
+    setShowConfirmation(true);
+    setTimeout(() => {
+      setShowConfirmation(false);
+    }, 4000);
+  };
+
   return (
     <>
       <div className="feedbackpage">
@@ -44,7 +54,16 @@ const FeedBackPage = ({ popUp, handleClosePopup, handleOpenClick }) => {
           </div>
         </div>
       </div>
-      {popUp && <ReviewPopup onClose={handleClosePopup} />}
+      {popUp && (
+        <ReviewPopup onClose={handleClosePopup} handleSubmit={handleSubmit} />
+      )}
+      {showConfirmation && (
+        <img
+          src={conf}
+          alt="review uploaded"
+          className="feedbackpage__confirmation"
+        />
+      )}
     </>
   );
 };

@@ -7,12 +7,11 @@ import x from "../../assets/images/x.svg";
 import reason from "../../assets/images/reason-question.svg";
 import { useState } from "react";
 
-const ReviewPopup = ({ onClose }) => {
+const ReviewPopup = ({ onClose, handleSubmit }) => {
   const [feedbackType, setFeedbackType] = useState(null);
   const [textareaValue, setTextareaValue] = useState("");
 
   const handleButtonClick = (type) => {
-    console.log("Button clicked:", type);
     setFeedbackType(type);
   };
 
@@ -23,6 +22,13 @@ const ReviewPopup = ({ onClose }) => {
 
   const handleTextareaChange = (e) => {
     setTextareaValue(e.target.value);
+  };
+
+  const handleFormSubmit = () => {
+    if (textareaValue.trim()) {
+      handleSubmit();
+      onClose();
+    }
   };
 
   return (
@@ -105,6 +111,7 @@ const ReviewPopup = ({ onClose }) => {
                       : "button--disabled reviewpopup__button-container"
                   }
                   text="Submit"
+                  onClick={handleFormSubmit}
                 />
               </div>
             </>
@@ -114,4 +121,5 @@ const ReviewPopup = ({ onClose }) => {
     </>
   );
 };
+
 export default ReviewPopup;
