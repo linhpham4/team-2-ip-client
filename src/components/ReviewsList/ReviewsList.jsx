@@ -12,7 +12,7 @@ const ReviewsList = ({ handleOpenClick, reviewHeadline, reviewBody, }) => {
       </div>
 
       <div className="reviewlist__review-container-bottom">
-        <p className="reviewlist__review-container-preview">{reviewBody}</p>∂
+        <p className="reviewlist__review-container-preview">{reviewBody}</p>
       </div>
     </div>
   );
